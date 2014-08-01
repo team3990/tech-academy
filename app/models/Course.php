@@ -66,4 +66,13 @@ class Course extends \Eloquent
     	return $this->belongsTo('\T4KModels\CourseType', 'course_type_id', 'id');
     }
     
+    /**
+     * Relationship to Chapter model.
+     * @return Eloquent Relationship
+     */
+    public function chapters()
+    {
+    	return $this->hasMany('\T4KModels\Chapter');
+    }
+    
 }
