@@ -54,17 +54,19 @@
             
             <div class="collapse navbar-collapse" id="t4k-navbar">
             
-                <?php if (Auth::check()) : ?>
                 <ul class="nav navbar-nav">
                     <li<?php echo (@$activeScreen == 'CoursesIndex') ? ' class="active"' : ''; ?>><a href="<?php // echo route('academy.courses.index'); ?>"><i class="fa fa-book fa-fw"></i> Cours</a></li>
+                	<?php if (Auth::check()) : ?>
+                	<?php endif; ?>
                 </ul>
-                <?php endif; ?>
                 
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (Auth::check()) : ?>
                     <li class="hidden-xs"><p class="navbar-text">Bonjour, <strong><?php echo Auth::user()->first_name; ?></strong>!</p></li>
                     <li<?php echo (@$activeScreen == 'ProfileIndex') ? ' class="active"' : ''; ?>><a href="http://portail.team3990.com/users/profile" target="_blank"><i class="fa fa-user fa-fw"></i> Mon compte</a></li>
                     <li><a href="<?php echo route('academy.users.logout'); ?>"><i class="fa fa-power-off fa-fw"></i> Se déconnecter</a></li>
+                    <?php else : ?>
+                    <li><a href="<?php echo route('academy.users.login'); ?>"><i class="fa fa-sign-in fa-fw"></i> Se connecter</a>
                     <?php endif; ?>
                     <li class="dropdown hidden-xs">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th fa-fw"></i> <i class="fa fa-caret-down fa-fw"></i></a>

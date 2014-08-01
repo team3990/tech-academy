@@ -26,10 +26,13 @@
     
         @section('content')
             <div class="row">
-                <div class="col-lg-12">
-                    <div class="page-header"><h1><i class="fa fa-dashboard fa-fw"></i> Bonjour <?php echo Auth::user()->first_name; ?>! <small>Dernières activités sur Tech Portail</small></h1></div>
-                </div>
-            </div>
+				<div class="col-lg-12">
+		            <div class="jumbotron">
+		                <h1>Tech Academy</h1>
+		                <p>La plateforme d'apprentissage en ligne et en classe d'Équipe 3990, <em>Tech for Kids</em>.</p>
+		            </div>
+				</div>
+			</div>
             
 
         @stop
