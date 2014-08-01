@@ -71,6 +71,27 @@ class CoursesController extends \BaseController {
 	}
 	
 	/**
+	 * View a course.
+	 * @param int $id
+	 * @return View Response
+	 */
+	public function view($id)
+	{
+		// Retrieve a course with its id
+		$course = \T4KModels\Course::find($id);
+	
+		// Array of data to send to view
+		$data = array(
+				'course'       	=> $course,
+				'currentRoute'  => \Route::currentRouteName(),
+				'activeScreen'  => 'CoursesIndex'
+		);
+	
+		// Render view
+		$this->layout->content = \View::make('courses.view', $data);
+	}
+	
+	/**
 	 * Create a event item.
 	 * @return View Response
 	 */

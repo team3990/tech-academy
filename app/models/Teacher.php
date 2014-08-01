@@ -35,7 +35,7 @@ class Teacher extends \Eloquent
      */
     public function courses()
     {
-        return $this->belongsToMany('\T4KModels\Course', 't4kacd_course_user', 'user_id', 'course_id')->orderBy('title');
+        return $this->belongsToMany('\T4KModels\Course', 't4kacd_course_teacher', 'user_id', 'course_id')->orderBy('title');
     }
     
     /**

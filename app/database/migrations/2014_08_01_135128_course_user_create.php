@@ -12,7 +12,7 @@ class CourseUserCreate extends Migration {
 	 */
 	public function up()
 	{
-		Schema::table('t4kacd_course_user', function(Blueprint $table)
+		Schema::table('t4kacd_course_teacher', function(Blueprint $table)
 		{
 			// Create table
 		    $table->create();
@@ -39,7 +39,7 @@ class CourseUserCreate extends Migration {
 	 */
 	public function down()
 	{
-		Schema::table('t4kacd_course_user', function(Blueprint $table)
+		Schema::table('t4kacd_course_teacher', function(Blueprint $table)
 		{
 			// Undo Changes
 			$table->drop();
