@@ -29,6 +29,7 @@ return array(
     'ClassPreloader\\Parser\\FileVisitor' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/FileVisitor.php',
     'ClassPreloader\\Parser\\NodeTraverser' => $vendorDir . '/classpreloader/classpreloader/src/ClassPreloader/Parser/NodeTraverser.php',
     'CourseTypeCreate' => $baseDir . '/app/database/migrations/2014_08_01_133245_course_type_create.php',
+    'CourseUserCreate' => $baseDir . '/app/database/migrations/2014_08_01_135128_course_user_create.php',
     'CoursesCreate' => $baseDir . '/app/database/migrations/2014_08_01_022210_courses_create.php',
     'CoursesCreatefk' => $baseDir . '/app/database/migrations/2014_08_01_133630_courses_createfk.php',
     'Crypt_AES' => $vendorDir . '/phpseclib/phpseclib/phpseclib/Crypt/AES.php',
