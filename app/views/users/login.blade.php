@@ -35,11 +35,11 @@
                 </div>
     
                 <div class="col-lg-4 col-md-4">
-                    <?php echo Form::open(array('route' => 'portal.users.connecting', 'class' => 'form_signin')) ?>
+                    <?php echo Form::open(array('route' => 'academy.users.connecting', 'class' => 'form_signin')) ?>
                     
                         <h2 class="form-signin-heading login-heading">Se connecter</h2>
                         
-                        <p>Pour continuer sur <strong>Tech Portail</strong>, veuillez vous connecter.</p>
+                        <p>Pour continuer sur <strong>Tech Académie</strong>, veuillez vous connecter.</p>
                         
                         <?php if(Session::has('authenticated')) : ?>
                             <div class="alert alert-danger">

@@ -18,15 +18,11 @@
 Route::group(array('prefix' => 'users'), function()
 {
     // Login screen.
-    Route::any('login',         array('as' => 'portal.users.login',         'uses' => 'T4KControllers\Users\UsersController@login'));
-    Route::any('connecting',    array('as' => 'portal.users.connecting',    'uses' => 'T4KControllers\Users\UsersController@connecting'));
-
-    // Initial administrator setup page
-    Route::any('setup',         array('as' => 'portal.users.setup',         'uses' => 'T4KControllers\Users\UsersController@setup'));
-    Route::any('setup/install', array('as' => 'portal.users.install',       'uses' => 'T4KControllers\Users\UsersController@install'));
+    Route::any('login',         array('as' => 'academy.users.login',		'uses' => 'T4KControllers\Users\UsersController@login'));
+    Route::any('connecting',    array('as' => 'academy.users.connecting',	'uses' => 'T4KControllers\Users\UsersController@connecting'));
 
     // Logout screen.
-    Route::any('logout',        array('as' => 'portal.users.logout',        'uses' => 'T4KControllers\Users\UsersController@logout'));
+    Route::any('logout',        array('as' => 'academy.users.logout',		'uses' => 'T4KControllers\Users\UsersController@logout'));
 });
 
 Route::group(array('before' => 'auth'), function()
@@ -36,7 +32,7 @@ Route::group(array('before' => 'auth'), function()
      * Module Dashboard
      * @namespace T4KControllers\Dashboard
      */
-    Route::any('/',             array('as' => 'portal.dashboard.index',     'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
-    Route::any('dashboard',     array('as' => 'portal.dashboard.index',     'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
+    Route::any('/',             array('as' => 'academy.dashboard.index',	'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
+    Route::any('dashboard',     array('as' => 'academy.dashboard.index',	'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
     
 });

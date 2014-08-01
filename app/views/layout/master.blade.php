@@ -49,35 +49,32 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a href="<?php echo route('portal.dashboard.index'); ?>" class="navbar-brand">Tech Portail</a>
+                <a href="<?php echo route('academy.dashboard.index'); ?>" class="navbar-brand">Tech Académie</a>
             </div>
             
             <div class="collapse navbar-collapse" id="t4k-navbar">
             
                 <?php if (Auth::check()) : ?>
                 <ul class="nav navbar-nav">
-                    <li<?php echo (@$activeScreen == 'NouvellesIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('portal.nouvelles.index'); ?>"><i class="fa fa-bullhorn fa-fw"></i> Nouvelles</a></li>
-                    <li<?php echo (@$activeScreen == 'EventsIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('portal.events.index'); ?>"><i class="fa fa-calendar fa-fw"></i> Calendrier</a></li>
-                    <li<?php echo (@$activeScreen == 'HoraireIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('portal.horaire.index'); ?>"><i class="fa fa-clock-o fa-fw"></i> Horaire</a></li>
-                    <li<?php echo (@$activeScreen == 'UsersIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('portal.users.index'); ?>"><i class="fa fa-users fa-fw"></i> Équipe</a></li>
+                    <li<?php echo (@$activeScreen == 'CoursesIndex') ? ' class="active"' : ''; ?>><a href="<?php // echo route('academy.courses.index'); ?>"><i class="fa fa-book fa-fw"></i> Cours</a></li>
                 </ul>
                 <?php endif; ?>
                 
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (Auth::check()) : ?>
                     <li class="hidden-xs"><p class="navbar-text">Bonjour, <strong><?php echo Auth::user()->first_name; ?></strong>!</p></li>
-                    <li<?php echo (@$activeScreen == 'ProfileIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('portal.users.profile'); ?>"><i class="fa fa-user fa-fw"></i> Mon compte</a></li>
-                    <li><a href="<?php echo route('portal.users.logout'); ?>"><i class="fa fa-power-off fa-fw"></i> Se déconnecter</a></li>
+                    <li<?php echo (@$activeScreen == 'ProfileIndex') ? ' class="active"' : ''; ?>><a href="http://portail.team3990.com/users/profile" target="_blank"><i class="fa fa-user fa-fw"></i> Mon compte</a></li>
+                    <li><a href="<?php echo route('academy.users.logout'); ?>"><i class="fa fa-power-off fa-fw"></i> Se déconnecter</a></li>
                     <?php endif; ?>
                     <li class="dropdown hidden-xs">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th fa-fw"></i> <i class="fa fa-caret-down fa-fw"></i></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Applications pour élèves et mentors</li>
-                            <li><a href="#"><i class="fa fa-cube fa-fw"></i> Tech Portail</a></li>
+                            <li><a href="http://portail.team3990.com" target="_blank"><i class="fa fa-cube fa-fw"></i> Tech Portail</a></li>
                             <li class="disabled"><a href="#"><i class="fa fa-briefcase fa-fw"></i> Tech Projets</a></li>
                             <li class="disabled"><a href="#"><i class="fa fa-automobile fa-fw"></i> Tech Parts</a></li>
                             <li class="disabled"><a href="#"><i class="fa fa-bug fa-fw"></i> Tech Incidents</a></li>
-                            <li class="disabled"><a href="#"><i class="fa fa-book fa-fw"></i> Tech Wiki</a></li>
+                            <li><a href="http://wiki.team3990.com" target="_blank"><i class="fa fa-book fa-fw"></i> Tech Wiki</a></li>
                             <li><a href="https://my.usfirst.org/stims/" target="_blank"><i class="fa fa-globe fa-fw"></i> STIMS</a></li>
                             <li class="divider"></li>
                             <li class="dropdown-header">Platforme</li>
@@ -96,11 +93,11 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-th fa-fw"></i> Autres applications <i class="fa fa-caret-down fa-fw"></i></a>
                         <ul class="dropdown-menu">
                             <li class="dropdown-header">Applications pour élèves et mentors</li>
-                            <li><a href="#"><i class="fa fa-cube fa-fw"></i> Tech Portail</a></li>
+                            <li><a href="http://portail.team3990.com"><i class="fa fa-cube fa-fw"></i> Tech Portail</a></li>
                             <li class="disabled"><a href="#"><i class="fa fa-briefcase fa-fw"></i> Tech Projets</a></li>
                             <li class="disabled"><a href="#"><i class="fa fa-automobile fa-fw"></i> Tech Parts</a></li>
                             <li class="disabled"><a href="#"><i class="fa fa-bug fa-fw"></i> Tech Incidents</a></li>
-                            <li class="disabled"><a href="#"><i class="fa fa-book fa-fw"></i> Tech Wiki</a></li>
+                            <li><a href="http://wiki.team3990.com"><i class="fa fa-book fa-fw"></i> Tech Wiki</a></li>
                             <li><a href="https://my.usfirst.org/stims/" target="_blank"><i class="fa fa-globe fa-fw"></i> STIMS</a></li>
                             <li class="divider"></li>
                             <li class="dropdown-header">Platforme</li>
