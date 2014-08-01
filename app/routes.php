@@ -18,19 +18,29 @@
 Route::group(array('prefix' => 'users'), function()
 {
     // Login screen.
-    Route::any('login',         array('as' => 'academy.users.login',		'uses' => 'T4KControllers\Users\UsersController@login'));
-    Route::any('connecting',    array('as' => 'academy.users.connecting',	'uses' => 'T4KControllers\Users\UsersController@connecting'));
+    Route::any('login',         	array('as' => 'academy.users.login',		'uses' => 'T4KControllers\Users\UsersController@login'));
+    Route::any('connecting',    	array('as' => 'academy.users.connecting',	'uses' => 'T4KControllers\Users\UsersController@connecting'));
 
     // Logout screen.
-    Route::any('logout',        array('as' => 'academy.users.logout',		'uses' => 'T4KControllers\Users\UsersController@logout'));
+    Route::any('logout',        	array('as' => 'academy.users.logout',		'uses' => 'T4KControllers\Users\UsersController@logout'));
 });
 
 /**
  * Module Dashboard
  * @namespace T4KControllers\Dashboard
  */
-Route::any('/',             array('as' => 'academy.dashboard.index',	'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
-Route::any('dashboard',     array('as' => 'academy.dashboard.index',	'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
+Route::any('/',             		array('as' => 'academy.dashboard.index',	'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
+Route::any('dashboard',     		array('as' => 'academy.dashboard.index',	'uses' => 'T4KControllers\Dashboard\DashboardController@index'));
+
+/**
+ * Module Courses
+ * @namespace T4KControllers\Courses
+ */
+Route::group(array('prefix' => 'cours'), function()
+{
+	Route::any('/{id?}',			array('as' => 'academy.courses.index',		'uses' => 'T4KControllers\Courses\CoursesController@index'));
+	Route::any('/view/{id}',		array('as' => 'academy.courses.view',		'uses' => 'T4KControllers\Courses\CoursesController@view'));
+});
 
 Route::group(array('before' => 'auth'), function()
 {

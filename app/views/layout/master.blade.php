@@ -6,7 +6,7 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Tech Portail: @yield('title') - Équipe Team 3990: Tech for Kids</title> 
+    <title>Tech Académie: @yield('title') - Équipe Team 3990: Tech for Kids</title> 
     
     @section('stylesheets')
         <!-- Font Awesome -->
@@ -17,6 +17,7 @@
         
         <!-- Styles -->
         {{ HTML::style('/assets/styles/t4k-styles.css'); }}
+        {{ HTML::style('/assets/styles/t4k-academy.css'); }}
     @show
     
     @section('scripts_header')
@@ -55,7 +56,7 @@
             <div class="collapse navbar-collapse" id="t4k-navbar">
             
                 <ul class="nav navbar-nav">
-                    <li<?php echo (@$activeScreen == 'CoursesIndex') ? ' class="active"' : ''; ?>><a href="<?php // echo route('academy.courses.index'); ?>"><i class="fa fa-book fa-fw"></i> Cours</a></li>
+                    <li<?php echo (@$activeScreen == 'CoursesIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('academy.courses.index'); ?>"><i class="fa fa-book fa-fw"></i> Cours</a></li>
                 	<?php if (Auth::check()) : ?>
                 	<?php endif; ?>
                 </ul>

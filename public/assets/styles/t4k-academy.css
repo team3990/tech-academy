@@ -1,0 +1,20 @@
+@CHARSET "UTF-8";
+
+/* ***************************************************************************
+ * T4K Styles
+ * ***************************************************************************
+ */
+.label-course, .label-course a {
+	font-family: Consolas, monospace;
+	background: #333;
+	color: #FFF;
+	padding: 5px 8px 2px 8px;
+	border: 1px solid #333;
+}
+.label-class, .label-class a {
+	font-family: Consolas, monospace;
+	background: #EEE;
+	color: #333;
+	padding: 5px 8px 2px 8px;
+	border: 1px solid #333;
+}
