@@ -72,7 +72,7 @@ class Course extends \Eloquent
      */
     public function chapters()
     {
-    	return $this->hasMany('\T4KModels\Chapter');
+    	return $this->hasMany('\T4KModels\Chapter')->orderBy('chapter_number');
     }
     
 }

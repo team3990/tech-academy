@@ -75,20 +75,35 @@ class CoursesController extends \BaseController {
 	 * @param int $id
 	 * @return View Response
 	 */
-	public function view($id)
+	public function view($course_id, $chapter_id = NULL, $page_id = NULL)
 	{
-		// Retrieve a course with its id
-		$course = \T4KModels\Course::find($id);
+		// Retrieve a course with its course_id
+		$course = \T4KModels\Course::find($course_id);
+		
+		// Retrieve a chapter with its chapter_id
+		if ($chapter_id !== NULL) $chapter = \T4KModels\Chapter::find($chapter_id);
+		
+		// Retrieve a page with its page_id
+		if ($page_id !== NULL) $page = \T4KModels\Page::find($page_id);
 	
 		// Array of data to send to view
 		$data = array(
 				'course'       	=> $course,
+				'chapter'		=> @$chapter,
+				'page'			=> @$page,
 				'currentRoute'  => \Route::currentRouteName(),
 				'activeScreen'  => 'CoursesIndex'
 		);
 	
 		// Render view
-		$this->layout->content = \View::make('courses.view', $data);
+		if (!$course->is_private || ($course->is_private && Auth::check()))
+		{
+			$this->layout->content = \View::make('courses.view', $data);
+		}
+		else
+		{
+			return Redirect::route('academy.users.login');
+		}
 	}
 	
 	/**

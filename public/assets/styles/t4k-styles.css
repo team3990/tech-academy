@@ -100,6 +100,7 @@ dd {
 }
 .active-warning, .active-warning>a {
 	background: #ec971f !important;
+	border-color: #ec971f !important;
 }
 
 /* ***************************************************************************

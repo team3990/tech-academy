@@ -44,7 +44,7 @@ class UsersController extends \BaseController
 	{
 	    if (Auth::attempt(array('email' => Input::get('email'), 'password' => Input::get('password')))) 
 	    {
-	        return Redirect::intended('/');
+	        return Redirect::intended(route('academy.courses.index'));
 	    } 
 	    else 
 	    {
@@ -59,7 +59,7 @@ class UsersController extends \BaseController
 	public function logout()
 	{
 	    Auth::logout();
-	    return Redirect::route('academy.users.login');
+	    return Redirect::route('academy.dashboard.index');
 	}
 
 }

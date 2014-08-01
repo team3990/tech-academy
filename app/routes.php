@@ -38,8 +38,8 @@ Route::any('dashboard',     		array('as' => 'academy.dashboard.index',	'uses' =>
  */
 Route::group(array('prefix' => 'cours'), function()
 {
-	Route::any('/{id?}',			array('as' => 'academy.courses.index',		'uses' => 'T4KControllers\Courses\CoursesController@index'));
-	Route::any('/view/{id}',		array('as' => 'academy.courses.view',		'uses' => 'T4KControllers\Courses\CoursesController@view'));
+	Route::any('/{id?}',										array('as' => 'academy.courses.index',		'uses' => 'T4KControllers\Courses\CoursesController@index'));
+	Route::any('/view/{course_id}/{chapter_id?}/{page_id?}',	array('as' => 'academy.courses.view',		'uses' => 'T4KControllers\Courses\CoursesController@view'));
 });
 
 Route::group(array('before' => 'auth'), function()

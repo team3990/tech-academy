@@ -54,7 +54,39 @@ class Chapter extends \Eloquent
      */
     public function pages()
     {
-    	return $this->hasMany('\T4KModels\Page');
+    	return $this->hasMany('\T4KModels\Page')->orderBy('page_number');
+    }
+    
+    /**
+     * Attribute: get the previous chapter of the current chapter.
+     * @return int|NULL
+     */
+    public function getPreviousAttribute()
+    {
+    	// Retrieve the chapter just before the current chapter
+    	$previous = \T4KModels\Chapter::
+    			  where('course_id', $this->course_id)
+    			->where('chapter_number', '<', $this->chapter_number)
+    			->orderBy('chapter_number', 'desc')
+    			->first();
+    	 
+    	return (count($previous) > 0) ? $previous : NULL;
+    }
+    
+    /**
+     * Attribute: get the next page of the current page.
+     * @return int|NULL
+     */
+    public function getNextAttribute()
+    {
+    	// Retrieve the chapter just after the current chapter
+		$next = \T4KModels\Chapter::
+    			  where('course_id', $this->course_id)
+    			->where('chapter_number', '>', $this->chapter_number)
+    			->orderBy('chapter_number', 'asc')
+    			->first();
+    	 
+    	return (count($next) > 0) ? $next : NULL;
     }
     
 }

@@ -33,6 +33,7 @@
 				</div>
 			</div>
             
+            <?php if (Auth::check()) : ?>
             <div class="row">
 		    	<div class="btn-toolbar">
 		        	<div class="btn-group">
@@ -70,6 +71,7 @@
 		            </div>
 				</div>
 			</div>
+			<?php endif; ?>
 			
 			<div class="row">
 		    	<div class="col-lg-12">
