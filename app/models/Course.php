@@ -45,7 +45,7 @@ class Course extends \Eloquent
      */
     public function teachers()
     {
-        return $this->belongsToMany('\T4KModels\Teacher', 't4kacd_course_user', 'course_id', 'user_id');
+        return $this->belongsToMany('\T4KModels\Teacher', 't4kacd_course_user', 'course_id', 'user_id')->orderBy('last_name')->orderBy('first_name');
     }
     
     /**

@@ -124,7 +124,7 @@
 		                        <div class="panel-body"><?php echo $course->desc; ?></div>
 		                        
 		                        <div class="panel-footer text-right">
-                                	<a href="#" class="btn btn-default">Consulter le cours <i class="fa fa-chevron-circle-right fa-fw"></i></a>
+                                	<a href="<?php echo route('academy.courses.view', $course->id); ?>" class="btn btn-default">Consulter le cours <i class="fa fa-chevron-circle-right fa-fw"></i></a>
 		                        </div>
 		                        
 		                    </div>

@@ -29,7 +29,7 @@ class CourseType extends \Eloquent
      */
     public function courses()
     {
-        return $this->hasMany('\T4KModels\Course');
+        return $this->hasMany('\T4KModels\Course')->orderBy('title');
     }
         
 }
