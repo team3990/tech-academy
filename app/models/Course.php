@@ -54,7 +54,7 @@ class Course extends \Eloquent
      */
     public function subject()
     {
-    	return $this->belongsTo('\T4KModels\Subject');
+    	return $this->belongsTo('\T4KModels\Subject')->withTrashed();
     }
     
     /**

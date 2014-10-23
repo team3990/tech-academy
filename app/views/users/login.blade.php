@@ -64,7 +64,7 @@
                         
                         <p><button class="btn btn-t4k" type="submit">Connexion <i class="fa fa-chevron-circle-right fa-fw"></i></button></p>
                         
-                        <p><a href="http://portail.team3990.com/users/oubli">J'ai oublié mon mot de passe</a></p>
+                        <p><a href="http://portail.team3990.com/users/oubli">Mot de passe oublié?<br />Première utilisation?</a></p>
                         
                     <?php echo Form::close(); ?>
                     

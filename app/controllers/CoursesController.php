@@ -54,7 +54,7 @@ class CoursesController extends \BaseController {
 		}
 		
 		// Subjects
-		$subjects = \T4KModels\Subject::get();
+		$subjects = \T4KModels\Subject::orderBy('title', 'asc')->get();
 	    
 	    // Array of data to send to view
 	    $data = array(
