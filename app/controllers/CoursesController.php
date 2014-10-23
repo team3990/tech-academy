@@ -39,12 +39,12 @@ class CoursesController extends \BaseController {
 		    // Retrieve all courses if user is authenticated
 		    if (Auth::check())
 		    {
-		    	$courses = \T4KModels\Course::orderBy('subject_id')->orderBy('class')->get();
+		    	$courses = \T4KModels\Course::orderBy('title')->get();
 		    }
 		    // Retrieve all public courses if user is not authenticated
 		    else
 		    {
-		    	$courses = \T4KModels\Course::orderBy('subject_id')->orderBy('class')->where('is_private', false)->get();
+		    	$courses = \T4KModels\Course::orderBy('title')->where('is_private', false)->get();
 		    }
 		}
 		else

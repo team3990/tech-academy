@@ -49,12 +49,12 @@ class Course extends \Eloquent
     }
     
     /**
-     * Relationship to Subject model.
+     * Relationship to Subtrack model.
      * @return Eloquent Relationship
      */
-    public function subject()
+    public function subtrack()
     {
-    	return $this->belongsTo('\T4KModels\Subject')->withTrashed();
+    	return $this->belongsTo('\T4KModels\Subtrack');
     }
     
     /**
@@ -73,6 +73,42 @@ class Course extends \Eloquent
     public function chapters()
     {
     	return $this->hasMany('\T4KModels\Chapter')->orderBy('chapter_number');
+    }
+    
+    /**
+     * Attribute: get the track information.
+     * @return Eloquent Object
+     */
+    public function getTrackAttribute()
+    {
+    	return $this->subtrack->track;
+    }
+    
+    /**
+     * Attribute: get the subject information.
+     * @return Eloquent Object
+     */
+    public function getSubjectAttribute()
+    {
+    	return $this->subtrack->track->subject;
+    }
+    
+    /**
+     * Attribute: get the course subject code.
+     * @return string
+     */
+    public function getSubjectCodeAttribute()
+    {
+    	return $this->subject->code;
+    }
+    
+    /**
+     * Attribute: get the course code.
+     * @return int
+     */
+    public function getCourseCodeAttribute()
+    {
+    	return $this->track->number.$this->subtrack->number.$this->number;
     }
     
 }

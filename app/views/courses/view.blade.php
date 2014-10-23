@@ -29,8 +29,8 @@
 				<div class="col-lg-12">
 		            <div class="page-header">
 		                <h1>
-                			<span class="label label-course"><?php echo $course->subject->code; ?></span>
-                            <span class="label label-class"><?php echo $course->class; ?></span> 
+                			<span class="label label-course"><?php echo $course->subject_code; ?></span>
+                            <span class="label label-class"><?php echo $course->course_code; ?></span> 
                             <?php echo $course->title; ?>
 		                </h1>
 		            </div>

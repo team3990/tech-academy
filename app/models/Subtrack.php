@@ -3,20 +3,20 @@
 namespace T4KModels;
 
 /**
- * T4KModels\Subject class
+ * T4KModels\Subtrack class
  * @author      minhnhatbui
  * @copyright   2014 Équipe Team 3990: Tech for Kids (Collège Regina Assumpta, Montréal, QC)
- * @abstract    Model Controller managing subjects.
+ * @abstract    Model Controller managing tracks.
  */
 
-class Subject extends \Eloquent
+class Subtrack extends \Eloquent
 {
     
     /**
      * The database table used by the model.
      * @var string
      */
-    protected $table = 't4kacd_subjects';
+    protected $table = 't4kacd_subtracks';
     
     /**
      * Enable model soft deleting functionality.
@@ -36,31 +36,34 @@ class Subject extends \Eloquent
      * @var array
      */
     public static $messages = array(
-        'title.required'    => 'Le titre du domaine d\'étude est requis.',
+        'title.required'    => 'Le titre de la sous-série est requis.',
     );
     
     /**
      * Relationship to Track model.
      * @return Eloquent Relationship
      */
-    public function tracks()
+    public function track()
     {
-        return $this->hasMany('\T4KModels\Track')->orderBy('number');
+    	return $this->belongsTo('\T4KModels\Track');
     }
     
     /**
-     * Attribute: get courses linked to a subject.
+     * Relationship to Course model.
+     * @return Eloquent Relationship
+     */
+    public function courses()
+    {
+    	return $this->hasMany('\T4KModels\Course')->orderBy('number');
+    }
+    
+    /**
+     * Attribute: get the subject information.
      * @return Eloquent Object
      */
-    public function getCoursesAttribute()
+    public function getSubjectAttribute()
     {
-    	$tracks = $this->tracks;
-    	$results = $tracks[0]->courses;
-    	for ($i = 1; $i < count($tracks); $i++)
-    	{
-    		$results = $results->merge($tracks[$i]->courses);
-    	}
-    	return $results;
+    	return $this->track->subject;
     }
     
 }

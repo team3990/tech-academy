@@ -94,8 +94,8 @@
 		                    
 		                        <div class="panel-heading">
 		                        
-		                            <span class="label label-course"><?php echo $course->subject->code; ?></span>
-		                            <span class="label label-class"><?php echo $course->class; ?></span> 
+		                            <span class="label label-course"><?php echo $course->subject_code; ?></span>
+		                            <span class="label label-class"><?php echo $course->course_code; ?></span> 
 		                            <strong><?php echo $course->title; ?></strong>
 		                            
 		                            <div class="small text-muted" style="margin-top: 10px">
@@ -141,7 +141,7 @@
 	                <?php endif; ?>
 		        </div>
 		    </div>
-
+		    
         @stop
         
     @stop
