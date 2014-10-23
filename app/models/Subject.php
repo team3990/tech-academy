@@ -63,4 +63,19 @@ class Subject extends \Eloquent
     	return $results;
     }
     
+    /**
+     * Attribute: retrieve all teachers in the subject.
+     * @return Eloquent Object
+     */
+    public function getTeachersAttribute()
+    {
+    	$courses = $this->courses;
+    	$results = $courses[0]->teachers;
+    	for ($i = 1; $i < count($courses); $i++)
+    	{
+    		$results = $results->merge($courses[$i]->teachers);
+    	}
+    	return $results->sortBy('last_name');
+    }
+    
 }

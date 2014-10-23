@@ -62,6 +62,20 @@
                             		<i class="fa fa-square fa-fw level-3"></i> Cours de 3e année<br />
                             		<i class="fa fa-square fa-fw"></i> Cours optionnels et complémentaires
                             	</p>
+                            	<p class="text-muted">Peu importe la(les) concentration(s) choisie(s) par l'élève, tous les cours de 1re année (cours en vert) de tous les sujets d'étude sont obligatoires.</p>
+                            	<hr />
+                            	<p><strong>Mentor(s) et bénévole(s) enseignant(s) : </strong></p>
+                            	<?php foreach ($subject->teachers as $teacher) : ?>
+                            		<div class="row">
+                            			<div class="col-xs-2 text-center">
+                            				<img src="http://www.team3990.com/assets/img/photosEquipe/NoPhoto.jpg" class="img-responsive img-rounded" />
+                            			</div>
+                            			<div class="col-xs-10">
+                            				<strong><?php echo $teacher->full_name; ?></strong><br />
+                            				<i class="fa fa-envelope-o fa-fw"></i> <a href="mailto:<?php echo $teacher->email; ?>"><?php echo $teacher->email; ?></a>
+                            			</div>
+                            		</div>
+                            	<?php endforeach; ?>
                             </div>
                             
                             <div class="col-sm-8 col-xs-12">
@@ -110,6 +124,7 @@
 							            					<?php foreach ($subtrack->courses as $course) : ?>
 							            					<tr>
 							            						<td>
+							            							<i class="fa fa-circle-o fa-fw"></i> 
 							            							<span class="label label-class"><?php echo $course->course_code; ?></span> 
 							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>">
 							            								<?php echo $course->title; ?>
