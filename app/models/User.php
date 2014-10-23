@@ -137,6 +137,11 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
     }
     
     /**
+     * Relationship to Progress model.
+     * @return Eloquent Relationship
+     */
+    
+    /**
      * Attribute: is user a mentor? 
      * @return boolean
      */

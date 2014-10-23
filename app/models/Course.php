@@ -111,4 +111,27 @@ class Course extends \Eloquent
     	return $this->track->number.$this->subtrack->number.$this->number;
     }
     
+    /**
+     * Attribute: has the current user completed the course?
+     * @return bool
+     */
+    public function getIsCompletedAttribute()
+    {
+    	$progress = \T4KModels\Progress::
+    			  where('user_id', \Auth::user()->id)
+    			->where('course_id', $this->id)
+    			->orderBy('updated_at')
+    			->orderBy('created_at')
+    			->first();
+    	
+    	if (count($progress))
+    	{
+    		return $progress->is_completed;
+    	}
+    	else
+    	{
+    		return 0;
+    	}
+    }
+    
 }

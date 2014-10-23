@@ -124,9 +124,9 @@
 							            					<?php foreach ($subtrack->courses as $course) : ?>
 							            					<tr>
 							            						<td>
-							            							<i class="fa fa-circle-o fa-fw"></i> 
+							            							<i class="fa <?php echo ($course->is_completed) ? 'fa-check-square-o text-success': 'fa-square-o text-muted'; ?> fa-fw"></i>
 							            							<span class="label label-class"><?php echo $course->course_code; ?></span> 
-							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>">
+							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>" <?php echo ($course->is_completed) ? 'style="text-decoration: line-through" class="text-muted"' : ''; ?>>
 							            								<?php echo $course->title; ?>
 						            								</a>
 						            							</td>

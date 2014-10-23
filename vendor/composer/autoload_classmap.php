@@ -1586,6 +1586,7 @@ return array(
     'T4KModels\\Course' => $baseDir . '/app/models/Course.php',
     'T4KModels\\CourseType' => $baseDir . '/app/models/CourseType.php',
     'T4KModels\\Page' => $baseDir . '/app/models/Page.php',
+    'T4KModels\\Progress' => $baseDir . '/app/models/Progress.php',
     'T4KModels\\Subject' => $baseDir . '/app/models/Subject.php',
     'T4KModels\\Subtrack' => $baseDir . '/app/models/Subtrack.php',
     'T4KModels\\Teacher' => $baseDir . '/app/models/Teacher.php',
