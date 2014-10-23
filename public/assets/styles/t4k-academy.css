@@ -18,3 +18,24 @@
 	padding: 5px 8px 2px 8px;
 	border: 1px solid #333;
 }
+.nav-pills>li.active>a, .nav-pills>li.active>a:hover, .nav-pills>li.active>a:focus {
+	background-color: #ec971f;
+}
+.panel-level-1 {
+	border-color: #58B15E;
+}
+.panel-level-2 {
+	border-color: #419BD7;
+}
+.panel-level-3 {
+	border-color: #FF8144;
+}
+.level-1 {
+	color: #58B15E;
+}
+.level-2 {
+	color: #419BD7;
+}
+.level-3 {
+	color: #FF8144;
+}

@@ -58,6 +58,7 @@
                 <ul class="nav navbar-nav">
                     <li<?php echo (@$activeScreen == 'CoursesIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('academy.courses.index'); ?>"><i class="fa fa-book fa-fw"></i> Cours</a></li>
                 	<?php if (Auth::check()) : ?>
+                	<li<?php echo (@$activeScreen == 'CursusIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('academy.cursus.index'); ?>"><i class="fa fa-graduation-cap fa-fw"></i> Cursus et progression</a></li>
                 	<?php endif; ?>
                 </ul>
                 

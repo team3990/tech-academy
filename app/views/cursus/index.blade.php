@@ -6,7 +6,7 @@
         
         {{-- HTML Header Section --}}
         @section('title')
-            Cours
+            Cursus et progression
         @stop
         
         @section('stylesheets')
@@ -26,121 +26,111 @@
     
         @section('content')
             <div class="row">
-				<div class="col-lg-12">
+				<div class="col-xs-12">
 		            <div class="page-header">
-		                <h1>Cours <small>Liste des cours disponibles</small></h1>
+		                <h1>Cursus et progression <small>Progression des apprentissages académiques</small></h1>
 		            </div>
 				</div>
 			</div>
-            
-            <?php if (Auth::check()) : ?>
-            <div class="row">
-		    	<div class="btn-toolbar">
-		        	<div class="btn-group">
-		                <a class="btn disabled">Filtrer par : </a>
-		            </div>
-		            <div class="btn-group">
-		                <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown">
-		                    <?php if (Route::input('id') == NULL) : ?>
-		                    	Tous les cours
-							<?php else : ?>
-								<i class="fa fa-check-square-o fa-fw"></i> 
-	                            <span class="label label-course"><?php echo $selected_subject->code; ?></span> 
-	                            <?php echo $selected_subject->title; ?>
-                            <?php endif; ?> <span class="caret"></span>
-		                </button>
-		                <ul class="dropdown-menu">
-		                    <li><a href="<?php echo route('academy.courses.index'); ?>">Tous les cours</a></li>
-		                    <?php if (count($subjects) > 0) : ?>
-			                    <li class="divider"></li>
-			                    <li class="dropdown-header">Sujets d'étude</li>
-			                    <?php foreach ($subjects as $subject) : ?>
-			                        <li<?php echo ($subject->id == Route::input('id')) ? ' class="active active-warning"' : ''; ?>>
-			                            <a href="<?php echo route('academy.courses.index', $subject->id); ?>">
-			                            <i class="fa <?php echo ($subject->id == Route::input('id')) ? 'fa-check-square-o' : 'fa-square-o'; ?> fa-fw"></i> 
-			                            <span class="label label-course"><?php echo $subject->code; ?></span> 
-			                            <?php echo $subject->title; ?>
-			                            </a>
-			                        </li>
-		                        <?php endforeach; ?>
-		                    <?php endif; ?>
-		                </ul>
-		            </div>
-		        	<div class="btn-group">
-		                <a class="btn disabled"><?php echo $ItemsCount; ?> cours disponible(s)</a>
-		            </div>
-				</div>
-			</div>
-			<?php endif; ?>
 			
-			<div class="row">
-		    	<div class="col-lg-12">
-		    		<?php if (!isset($courses)) $courses = $selected_subject->courses; ?>
-					<?php if (count($courses) > 0) : ?>
-		                <?php $i = 0; foreach ($courses as $course) : ?>
-		                
-		                    <?php // create new row if 4 boxes
-		                    if ($i % 3 == 0 && $i != 0) : ?>
-		            		</div>
-		                    <?php endif; ?>
-		            
-		                    <?php // create new row if 4 boxes
-		                    if ($i % 3 == 0) : ?>
-		            		<div class="row">
-		                    <?php endif; ?>
-		                    
-		                <div class="col-lg-4">
-		                    <div class="panel panel-default">
-		                    
-		                        <div class="panel-heading">
-		                        
-		                            <span class="label label-course"><?php echo $course->subject->code; ?></span>
-		                            <span class="label label-class"><?php echo $course->class; ?></span> 
-		                            <strong><?php echo $course->title; ?></strong>
-		                            
-		                            <div class="small text-muted" style="margin-top: 10px">
-		                            
-			                            <?php if (count($course->teachers) > 0) : ?>
-			                            	<i class="fa fa-graduation-cap fa-fw pull-left"></i> 
-			                            	<div style="margin-left: 20px">
-			                            	<?php 
-			                            	$j = 0; 
-			                            	foreach ($course->teachers as $teacher) 
-			                            	{
-			                            		echo $teacher->full_name;
-			                            		if ($j == count($course->teachers) - 2) echo ' et ';
-			                            		if ($j != count($course->teachers) - 2 && $j != count($course->teachers) - 1) echo ', ';
-			                            		$j++;
-			                            	}
-			                            	?>
-			                            	</div>
-			                            <?php endif; ?>
-			                            
-			                            <i class="fa fa-info-circle fa-fw pull-left" style="margin-top: 2px"></i> 
-			                            <div style="margin-left: 20px"><?php echo $course->type->title; ?></div>
-		                            
-		                            </div>
-		                            
-		                        </div>
-		                        
-		                        <div class="panel-body"><?php echo $course->desc; ?></div>
-		                        
-		                        <div class="panel-footer text-right">
-                                	<a href="<?php echo route('academy.courses.view', $course->id); ?>" class="btn btn-default">Consulter le cours <i class="fa fa-chevron-circle-right fa-fw"></i></a>
-		                        </div>
-		                        
-		                    </div>
-		                </div>
-		                    
-	                    <?php $i++; endforeach; ?>
-		            <?php else : ?>
-		            <div class="alert alert-warning text-center">
-		                <p>Aucun cours disponible pour le moment.</p>
-		                <p>Aidez-nous à en créer un!</p>
-		            </div>
-	                <?php endif; ?>
-		        </div>
-		    </div>
+			<ul class="nav nav-pills">
+				<li class="disabled"><a>Choisissez un sujet d'étude : </a></li>
+				<?php for ($i = count($subjects)-1; $i >= 0; $i--) : ?>
+				<li <?php echo ($i == count($subjects)-1) ? ' class="active"' : ''; ?>><a href="<?php echo '#'.$subjects[$i]->code; ?>" data-toggle="tab"><?php echo $subjects[$i]->code; ?></a></li>
+				<?php endfor; ?>
+			</ul>
+			
+			<p>&nbsp;</p>
+            
+            <div class="tab-content">
+	            <?php $i = count($subjects)-1; foreach ($subjects as $subject) : ?>
+	            	<div class="tab-pane<?php echo ($i == 0) ? ' active' : ''; ?>" id="<?php echo $subject->code; ?>">
+			            <div class="row">
+			            
+			            	<div class="col-sm-4 col-xs-12">
+			            	
+			            		<h2 style="margin-top: 0">
+			            			<span class="label label-course"><?php echo $subject->code; ?></span> <br />
+	                            	<small><?php echo $subject->title; ?></small>
+                            	</h2>
+                            	<p><i class="fa fa-line-chart fa-fw"></i> <?php echo count($subject->tracks); ?> parcours proposé(s).</p>
+                            	<hr />
+                            	<p><strong>Légende :</strong></p>
+                            	<p>
+                            		<i class="fa fa-square fa-fw level-1"></i> Cours de 1re année (obligatoires pour tous les élèves)<br />
+                            		<i class="fa fa-square fa-fw level-2"></i> Cours de 2e année<br />
+                            		<i class="fa fa-square fa-fw level-3"></i> Cours de 3e année<br />
+                            		<i class="fa fa-square fa-fw"></i> Cours optionnels et complémentaires
+                            	</p>
+                            </div>
+                            
+                            <div class="col-sm-8 col-xs-12">
+                            	<?php foreach ($subject->tracks as $track) : ?>
+                            	
+                            		<div class="row">
+                            			<div class="col-xs-12">
+                            				<p class="lead">
+				            					<span class="label label-class"><?php echo $track->number; ?>00</span> 
+				            					<?php echo $track->title; ?>
+			            					</p>
+                            			</div>
+                            		</div>
+                            		
+                            		<div class="row">
+                            			<?php foreach ($track->subtracks as $subtrack) : ?>
+                            			
+                            				<?php 
+                            				$panel_type = "panel-default";
+                            				switch ($subtrack->level) :
+												case 1 :
+                            						$panel_type = "panel-level-1";
+                            						break;
+												case 2 : 
+													$panel_type = "panel-level-2";
+													break;
+												case 3 :
+													$panel_type = "panel-level-3";
+													break;
+												default :
+													$panel_type = "panel-default";
+                            					endswitch; 
+                            				?>
+                            				
+	                            			<div class="col-sm-6 col-xs-12">
+	                            			
+	                            				<p>
+	                            					<i class="fa fa-square fa-fw level-<?php echo $subtrack->level; ?> pull-right"></i> 
+					            					<span class="label label-class"><?php echo $track->number.$subtrack->number; ?>0</span> 
+					            					<strong><?php echo $subtrack->title; ?></strong>
+	                            				</p>
+	                            				
+							            		<div class="panel <?php echo $panel_type; ?>">
+							            			<table class="table table-hover">
+							            				<tbody>
+							            					<?php foreach ($subtrack->courses as $course) : ?>
+							            					<tr>
+							            						<td>
+							            							<span class="label label-class"><?php echo $course->course_code; ?></span> 
+							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>">
+							            								<?php echo $course->title; ?>
+						            								</a>
+						            							</td>
+							            					</tr>
+							            					<?php endforeach; ?>
+							            				</tbody>
+							            			</table>
+							            		</div>
+						            		</div>
+				            			<?php endforeach; ?>
+			            			</div>
+				            		
+			            		<?php endforeach; ?>
+			            	</div>
+			            	
+			            </div>
+			        </div>
+	            <?php $i--; endforeach; ?>
+            </div>
 
         @stop
         

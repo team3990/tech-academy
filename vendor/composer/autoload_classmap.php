@@ -1578,6 +1578,7 @@ return array(
     'System_SSH_Agent' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'T4KControllers\\Courses\\CoursesController' => $baseDir . '/app/controllers/CoursesController.php',
+    'T4KControllers\\Cursus\\CursusController' => $baseDir . '/app/controllers/CursusController.php',
     'T4KControllers\\Dashboard\\DashboardController' => $baseDir . '/app/controllers/DashboardController.php',
     'T4KControllers\\Users\\UsersController' => $baseDir . '/app/controllers/UsersController.php',
     'T4KHelpers' => $baseDir . '/app/libraries/T4KHelpers.php',

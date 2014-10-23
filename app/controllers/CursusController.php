@@ -1,6 +1,6 @@
 <?php
 
-namespace T4KControllers\Courses;
+namespace T4KControllers\Cursus;
 
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
@@ -10,13 +10,13 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Session;
 
 /**
- * T4KControllers\Courses\CoursesController class
+ * T4KControllers\Cursus\CursusController class
  * @author      minhnhatbui
  * @copyright   2014 Équipe Team 3990: Tech for Kids (Collège Regina Assumpta, Montréal, QC)
- * @abstract    View Controller for the Course model.
+ * @abstract    View Controller for the Cursus model.
  */
 
-class CoursesController extends \BaseController { 
+class CursusController extends \BaseController { 
     
     /**
      * Constructor.
@@ -33,17 +33,13 @@ class CoursesController extends \BaseController {
      */
 	public function index()
 	{
-	    // Retrieve all courses
-    	$courses = \T4KModels\Course::orderBy('subject_id')->orderBy('class')->get();
-
-		// Subjects
+	    // Retrieve all subjects
 		$subjects = \T4KModels\Subject::orderBy('title', 'asc')->get();
 	    
 	    // Array of data to send to view
 	    $data = array(
-                'courses'   		=> $courses,
 	    		'subjects'			=> $subjects,
-                'ItemsCount'        => NULL,
+                'ItemsCount'        => \T4KModels\Subject::count(),
                 'currentRoute'      => \Route::currentRouteName(),
                 'activeScreen'      => 'CursusIndex'
 	    );
