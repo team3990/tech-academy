@@ -50,7 +50,7 @@ Route::group(array('before' => 'auth'), function()
 	 */
 	Route::group(array('prefix' => 'cursus'), function()
 	{
-		Route::any('/',					array('as' => 'academy.cursus.index',		'uses' => 'T4KControllers\Cursus\CursusController@index'));
+		Route::any('/{id?}',				array('as' => 'academy.cursus.index',		'uses' => 'T4KControllers\Cursus\CursusController@index'));
 	});
 	
 	/**

@@ -31,14 +31,22 @@ class CursusController extends \BaseController {
      * @param string $id
      * @return View Response
      */
-	public function index()
+	public function index($id = NULL)
 	{
 	    // Retrieve all subjects
 		$subjects = \T4KModels\Subject::orderBy('title', 'asc')->get();
+		
+		// Retrieve all students
+		$students = \T4KModels\User::where('user_role_id', 1)->orderBy('last_name')->orderBy('first_name')->get();
+		
+		// If a student is currently selected
+		$user = ($id == NULL) ? Auth::user() : \T4KModels\User::find($id);
 	    
 	    // Array of data to send to view
 	    $data = array(
 	    		'subjects'			=> $subjects,
+	    		'students'			=> $students,
+	    		'user'				=> $user,
                 'ItemsCount'        => \T4KModels\Subject::count(),
                 'currentRoute'      => \Route::currentRouteName(),
                 'activeScreen'      => 'CursusIndex'

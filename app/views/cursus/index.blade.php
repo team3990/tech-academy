@@ -28,13 +28,29 @@
             <div class="row">
 				<div class="col-xs-12">
 		            <div class="page-header">
-		                <h1>Cursus et progression <small>Progression des apprentissages académiques</small></h1>
+		                <h1>
+		                	Cursus et progression <br />
+		                	<small>Progression des apprentissages pour 
+		                	<?php if (Auth::user()->is_mentor) : ?>
+		                		<span class="dropdown">
+			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user->full_name; ?> <i class="fa fa-caret-down fa-fw"></i></a>
+			                        <ul class="dropdown-menu">
+			                        	<?php foreach ($students as $student) : ?>
+			                            <li><a href="<?php echo route('academy.cursus.index', $student->id); ?>"><?php echo $student->last_name.', '.$student->first_name; ?></a></li>
+			                            <?php endforeach; ?>
+			                        </ul>
+				                </span>
+		                	<?php else : ?>
+		                		<strong><?php echo $user->full_name; ?></strong>
+		                	<?php endif; ?>
+		                	</small>
+	                	</h1>
 		            </div>
 				</div>
 			</div>
 			
 			<ul class="nav nav-pills">
-				<li class="disabled"><a>Choisissez un sujet d'étude : </a></li>
+				<li class="disabled"><a>Choisissez une concentration : </a></li>
 				<?php for ($i = count($subjects)-1; $i >= 0; $i--) : ?>
 				<li <?php echo ($i == count($subjects)-1) ? ' class="active"' : ''; ?>><a href="<?php echo '#'.$subjects[$i]->code; ?>" data-toggle="tab"><?php echo $subjects[$i]->code; ?></a></li>
 				<?php endfor; ?>
@@ -53,16 +69,17 @@
 			            			<span class="label label-course"><?php echo $subject->code; ?></span> <br />
 	                            	<small><?php echo $subject->title; ?></small>
                             	</h2>
-                            	<p><i class="fa fa-line-chart fa-fw"></i> <?php echo count($subject->tracks); ?> parcours proposé(s).</p>
+                            	<p><i class="fa fa-line-chart fa-fw"></i> <?php echo count($subject->tracks); ?> blocs d'apprentissage proposé(s).</p>
                             	<hr />
                             	<p><strong>Légende :</strong></p>
                             	<p>
-                            		<i class="fa fa-circle fa-fw level-1"></i> Cours de 1re année (obligatoires pour tous les élèves)<br />
-                            		<i class="fa fa-circle fa-fw level-2"></i> Cours de 2e année<br />
-                            		<i class="fa fa-circle fa-fw level-3"></i> Cours de 3e année<br />
+                            		<i class="fa fa-circle fa-fw level-1"></i> Cours d'introduction <br />
+                            		<i class="fa fa-fw"></i> <strong class="small">obligatoires pour tous les élèves</strong><br />
+                            		<i class="fa fa-circle fa-fw level-2"></i> Cours avancés<br />
+                            		<i class="fa fa-circle fa-fw level-3"></i> Cours experts<br />
                             		<i class="fa fa-circle fa-fw"></i> Cours optionnels et complémentaires
                             	</p>
-                            	<p class="text-muted">Peu importe la(les) concentration(s) choisie(s) par l'élève, tous les cours de 1re année (cours en vert) de tous les sujets d'étude sont obligatoires.</p>
+                            	<p class="text-muted">Peu importe la(les) concentration(s) choisie(s) par l'élève, tous les cours d'introduction de toutes les concentrations sont obligatoires.</p>
                             	<p>
                             		<i class="fa fa-square-o text-muted fa-fw"></i> Cours non complété<br />
                             		<i class="fa fa-check-square-o fa-fw text-success"></i> Cours complété avec succès<br />
@@ -126,11 +143,11 @@
 							            			<table class="table table-hover">
 							            				<tbody>
 							            					<?php foreach ($subtrack->courses as $course) : ?>
-							            					<tr<?php echo ($course->is_completed()) ? ' class="active"' : ''; ?>>
+							            					<tr<?php echo ($course->is_completed($user->id)) ? ' class="active"' : ''; ?>>
 							            						<td>
-							            							<i class="fa <?php echo ($course->is_completed()) ? 'fa-check-square-o text-success': 'fa-square-o text-muted'; ?> fa-fw"></i>
+							            							<i class="fa <?php echo ($course->is_completed($user->id)) ? 'fa-check-square-o text-success': 'fa-square-o text-muted'; ?> fa-fw"></i>
 							            							<span class="label label-class"><?php echo $course->course_code; ?></span> 
-							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>"<?php echo ($course->is_completed()) ? ' class="text-muted"' : ''; ?>>
+							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>"<?php echo ($course->is_completed($user->id)) ? ' class="text-muted"' : ''; ?>>
 							            								<?php echo $course->title; ?>
 						            								</a>
 						            							</td>
