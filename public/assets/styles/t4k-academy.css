@@ -39,3 +39,8 @@
 .level-3 {
 	color: #FF8144;
 }
+.scrollable-menu {
+    height: auto;
+    max-height: 600px;
+    overflow-x: hidden;
+}
