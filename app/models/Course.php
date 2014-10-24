@@ -115,10 +115,12 @@ class Course extends \Eloquent
      * Attribute: has the current user completed the course?
      * @return bool
      */
-    public function getIsCompletedAttribute()
+    public function is_completed($user_id = NULL)
     {
+    	$user_id = ($user_id == NULL) ? \Auth::user()->id : $user_id;
+    	
     	$progress = \T4KModels\Progress::
-    			  where('user_id', \Auth::user()->id)
+    			  where('user_id', $user_id)
     			->where('course_id', $this->id)
     			->orderBy('updated_at')
     			->orderBy('created_at')

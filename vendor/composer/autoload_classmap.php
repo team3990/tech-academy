@@ -1577,6 +1577,7 @@ return array(
     'Symfony\\Component\\Translation\\Writer\\TranslationWriter' => $vendorDir . '/symfony/translation/Symfony/Component/Translation/Writer/TranslationWriter.php',
     'System_SSH_Agent' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
     'System_SSH_Agent_Identity' => $vendorDir . '/phpseclib/phpseclib/phpseclib/System/SSH/Agent.php',
+    'T4KControllers\\Admin\\ProgressController' => $baseDir . '/app/controllers/admin/ProgressionController.php',
     'T4KControllers\\Courses\\CoursesController' => $baseDir . '/app/controllers/CoursesController.php',
     'T4KControllers\\Cursus\\CursusController' => $baseDir . '/app/controllers/CursusController.php',
     'T4KControllers\\Dashboard\\DashboardController' => $baseDir . '/app/controllers/DashboardController.php',

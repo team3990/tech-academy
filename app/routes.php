@@ -53,4 +53,18 @@ Route::group(array('before' => 'auth'), function()
 		Route::any('/',					array('as' => 'academy.cursus.index',		'uses' => 'T4KControllers\Cursus\CursusController@index'));
 	});
 	
+	/**
+	 * Module Administration
+	 * @namespace T4KControllers\Admin
+	 */
+	Route::group(array('prefix' => 'admin'), function()
+	{
+		Route::group(array('prefix' => 'progression'), function()
+		{
+			Route::any('/',						array('as' => 'academy.admin.progress.index',		'uses' => 'T4KControllers\Admin\ProgressController@index'));
+			Route::any('modifier/{id}',         array('as' => 'academy.admin.progress.edit',		'uses' => 'T4KControllers\Admin\ProgressController@edit'));
+			Route::any('modifier/save/{id}',    array('as' => 'academy.admin.progress.update',		'uses' => 'T4KControllers\Admin\ProgressController@update'));
+		});
+	});
+	
 });

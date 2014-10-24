@@ -58,9 +58,21 @@
                 <ul class="nav navbar-nav">
                     <li<?php echo (@$activeScreen == 'CoursesIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('academy.courses.index'); ?>"><i class="fa fa-book fa-fw"></i> Cours</a></li>
                 	<?php if (Auth::check()) : ?>
-                	<li<?php echo (@$activeScreen == 'CursusIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('academy.cursus.index'); ?>"><i class="fa fa-graduation-cap fa-fw"></i> Cursus et progression</a></li>
+                	<li<?php echo (@$activeScreen == 'CursusIndex') ? ' class="active"' : ''; ?>><a href="<?php echo route('academy.cursus.index'); ?>"><i class="fa fa-graduation-cap fa-fw"></i> Cursus</a></li>
                 	<?php endif; ?>
                 </ul>
+                                
+                <?php if (Auth::check() && Auth::user()->is_mentor) : ?>
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown hidden-xs<?php echo (@$activeScreen == 'Admin') ? ' active' : ''; ?>">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-cog fa-fw"></i> <i class="fa fa-caret-down fa-fw"></i></a>
+                        <ul class="dropdown-menu">
+                            <li class="dropdown-header">Administration</li>
+                            <li><a href="<?php echo route('academy.admin.progress.index'); ?>"><i class="fa fa-line-chart fa-fw"></i> Gestion de progression</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <?php endif; ?>
                 
                 <ul class="nav navbar-nav navbar-right">
                     <?php if (Auth::check()) : ?>

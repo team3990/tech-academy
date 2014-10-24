@@ -57,12 +57,16 @@
                             	<hr />
                             	<p><strong>Légende :</strong></p>
                             	<p>
-                            		<i class="fa fa-square fa-fw level-1"></i> Cours de 1re année (obligatoires pour tous les élèves)<br />
-                            		<i class="fa fa-square fa-fw level-2"></i> Cours de 2e année<br />
-                            		<i class="fa fa-square fa-fw level-3"></i> Cours de 3e année<br />
-                            		<i class="fa fa-square fa-fw"></i> Cours optionnels et complémentaires
+                            		<i class="fa fa-circle fa-fw level-1"></i> Cours de 1re année (obligatoires pour tous les élèves)<br />
+                            		<i class="fa fa-circle fa-fw level-2"></i> Cours de 2e année<br />
+                            		<i class="fa fa-circle fa-fw level-3"></i> Cours de 3e année<br />
+                            		<i class="fa fa-circle fa-fw"></i> Cours optionnels et complémentaires
                             	</p>
                             	<p class="text-muted">Peu importe la(les) concentration(s) choisie(s) par l'élève, tous les cours de 1re année (cours en vert) de tous les sujets d'étude sont obligatoires.</p>
+                            	<p>
+                            		<i class="fa fa-square-o text-muted fa-fw"></i> Cours non complété<br />
+                            		<i class="fa fa-check-square-o fa-fw text-success"></i> Cours complété avec succès<br />
+                            	</p>
                             	<hr />
                             	<p><strong>Mentor(s) et bénévole(s) enseignant(s) : </strong></p>
                             	<?php foreach ($subject->teachers as $teacher) : ?>
@@ -113,7 +117,7 @@
 	                            			<div class="col-sm-6 col-xs-12">
 	                            			
 	                            				<p>
-	                            					<i class="fa fa-square fa-fw level-<?php echo $subtrack->level; ?> pull-right"></i> 
+	                            					<i class="fa fa-circle fa-fw level-<?php echo $subtrack->level; ?> pull-right"></i> 
 					            					<span class="label label-class"><?php echo $track->number.$subtrack->number; ?>0</span> 
 					            					<strong><?php echo $subtrack->title; ?></strong>
 	                            				</p>
@@ -122,11 +126,11 @@
 							            			<table class="table table-hover">
 							            				<tbody>
 							            					<?php foreach ($subtrack->courses as $course) : ?>
-							            					<tr>
+							            					<tr<?php echo ($course->is_completed()) ? ' class="active"' : ''; ?>>
 							            						<td>
-							            							<i class="fa <?php echo ($course->is_completed) ? 'fa-check-square-o text-success': 'fa-square-o text-muted'; ?> fa-fw"></i>
+							            							<i class="fa <?php echo ($course->is_completed()) ? 'fa-check-square-o text-success': 'fa-square-o text-muted'; ?> fa-fw"></i>
 							            							<span class="label label-class"><?php echo $course->course_code; ?></span> 
-							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>" <?php echo ($course->is_completed) ? 'style="text-decoration: line-through" class="text-muted"' : ''; ?>>
+							            							<a href="<?php echo route('academy.courses.view', $course->id); ?>"<?php echo ($course->is_completed()) ? ' class="text-muted"' : ''; ?>>
 							            								<?php echo $course->title; ?>
 						            								</a>
 						            							</td>
