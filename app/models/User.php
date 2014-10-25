@@ -137,9 +137,20 @@ class User extends \Eloquent implements UserInterface, RemindableInterface
     }
     
     /**
-     * Relationship to Progress model.
+     * Relationship to Child model.
      * @return Eloquent Relationship
      */
+    public function getChildrenAttribute()
+    {
+        if ($this->is_parent)
+        {
+        	return Child::where('parent_id', $this->id)->get();
+        }
+        else
+        {
+        	return NULL;
+        }
+    }
     
     /**
      * Attribute: is user a mentor? 

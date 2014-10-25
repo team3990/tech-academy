@@ -40,6 +40,15 @@
 			                            <?php endforeach; ?>
 			                        </ul>
 				                </span>
+				            <?php elseif (Auth::user()->is_parent) : ?>
+				            	<span class="dropdown">
+			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo (Route::input('id') == NULL) ? 'Veuillez sélectionner votre enfant...' : $user->full_name; ?> <i class="fa fa-caret-down fa-fw"></i></a>
+			                        <ul class="dropdown-menu">
+			                        	<?php foreach (Auth::user()->children as $child) : ?>
+			                            <li><a href="<?php echo route('academy.cursus.index', $child->user->id); ?>"><?php echo $child->user->full_name; ?></a></li>
+			                            <?php endforeach; ?>
+			                        </ul>
+				                </span>
 		                	<?php else : ?>
 		                		<strong><?php echo $user->full_name; ?></strong>
 		                	<?php endif; ?>
@@ -48,6 +57,8 @@
 		            </div>
 				</div>
 			</div>
+			
+			<?php if (!Auth::user()->is_parent && Route::input('id') != NULL) : ?>
 			
 			<ul class="nav nav-pills">
 				<li class="disabled"><a>Choisissez une concentration : </a></li>
@@ -167,6 +178,8 @@
 			        </div>
 	            <?php $i--; endforeach; ?>
             </div>
+            
+        <?php endif; ?>
 
         @stop
         

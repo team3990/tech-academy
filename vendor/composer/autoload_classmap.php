@@ -1584,6 +1584,7 @@ return array(
     'T4KControllers\\Users\\UsersController' => $baseDir . '/app/controllers/UsersController.php',
     'T4KHelpers' => $baseDir . '/app/libraries/T4KHelpers.php',
     'T4KModels\\Chapter' => $baseDir . '/app/models/Chapter.php',
+    'T4KModels\\Child' => $baseDir . '/app/models/Child.php',
     'T4KModels\\Course' => $baseDir . '/app/models/Course.php',
     'T4KModels\\CourseType' => $baseDir . '/app/models/CourseType.php',
     'T4KModels\\Page' => $baseDir . '/app/models/Page.php',
