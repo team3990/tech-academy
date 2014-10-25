@@ -38,6 +38,8 @@ class CursusController extends \BaseController {
 		
 		// Retrieve all students
 		$students = \T4KModels\User::where('user_role_id', 1)->orderBy('last_name')->orderBy('first_name')->get();
+		$mentors = \T4KModels\User::where('user_role_id', 2)->orderBy('last_name')->orderBy('first_name')->get();
+		$volunteers = \T4KModels\User::where('user_role_id', 6)->orderBy('last_name')->orderBy('first_name')->get();
 		
 		// If a student is currently selected
 		$user = ($id == NULL) ? Auth::user() : \T4KModels\User::find($id);
@@ -46,6 +48,8 @@ class CursusController extends \BaseController {
 	    $data = array(
 	    		'subjects'			=> $subjects,
 	    		'students'			=> $students,
+	    		'mentors'			=> $mentors,
+	    		'volunteers'		=> $volunteers,
 	    		'user'				=> $user,
                 'ItemsCount'        => \T4KModels\Subject::count(),
                 'currentRoute'      => \Route::currentRouteName(),

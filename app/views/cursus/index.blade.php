@@ -34,9 +34,20 @@
 		                	<?php if (Auth::user()->is_mentor) : ?>
 		                		<span class="dropdown">
 			                        <a href="#" class="dropdown-toggle" data-toggle="dropdown"><?php echo $user->full_name; ?> <i class="fa fa-caret-down fa-fw"></i></a>
-			                        <ul class="dropdown-menu">
+			                        <ul class="dropdown-menu scrollable-menu">
+			                        	<li class="dropdown-header">Élèves</li>
 			                        	<?php foreach ($students as $student) : ?>
 			                            <li><a href="<?php echo route('academy.cursus.index', $student->id); ?>"><?php echo $student->last_name.', '.$student->first_name; ?></a></li>
+			                            <?php endforeach; ?>
+			                        	<li class="divider"></li>
+			                            <li class="dropdown-header">Bénévoles</li>
+			                        	<?php foreach ($volunteers as $volunteer) : ?>
+			                            <li><a href="<?php echo route('academy.cursus.index', $volunteer->id); ?>"><?php echo $volunteer->last_name.', '.$volunteer->first_name; ?></a></li>
+			                            <?php endforeach; ?>
+			                        	<li class="divider"></li>
+			                        	<li class="dropdown-header">Mentors</li>
+			                        	<?php foreach ($mentors as $mentor) : ?>
+			                            <li><a href="<?php echo route('academy.cursus.index', $mentor->id); ?>"><?php echo $mentor->last_name.', '.$mentor->first_name; ?></a></li>
 			                            <?php endforeach; ?>
 			                        </ul>
 				                </span>
