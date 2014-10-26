@@ -69,7 +69,7 @@
 				</div>
 			</div>
 			
-			<?php if (!Auth::user()->is_parent && Route::input('id') != NULL) : ?>
+			
 			
 			<ul class="nav nav-pills">
 				<li class="disabled"><a>Choisissez une concentration : </a></li>
@@ -190,7 +190,7 @@
 	            <?php $i--; endforeach; ?>
             </div>
             
-        <?php endif; ?>
+        
 
         @stop
         
