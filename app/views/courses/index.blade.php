@@ -90,13 +90,16 @@
 		                    <?php endif; ?>
 		                    
 		                <div class="col-lg-4">
-		                    <div class="panel panel-default">
+		                    <div class="panel panel-default panel-level-<?php echo $course->subtrack->level; ?>">
 		                    
-		                        <div class="panel-heading">
+		                        <div class="panel-body<?php echo ($course->is_completed()) ? ' panel-completed' : ''; ?>">
 		                        
+		                        	<i class="fa fa-circle fa-fw level-<?php echo $course->subtrack->level; ?> pull-right"></i>
 		                            <span class="label label-course"><?php echo $course->subject_code; ?></span>
 		                            <span class="label label-class"><?php echo $course->course_code; ?></span> 
+		                            <a href="<?php echo route('academy.courses.view', $course->id); ?>">
 		                            <strong><?php echo $course->title; ?></strong>
+		                            </a>
 		                            
 		                            <div class="small text-muted" style="margin-top: 10px">
 		                            
@@ -120,14 +123,8 @@
 			                            <div style="margin-left: 20px"><?php echo $course->type->title; ?></div>
 		                            
 		                            </div>
-		                            
-		                        </div>
-		                        
-		                        <div class="panel-body"><?php echo $course->desc; ?></div>
-		                        
-		                        <div class="panel-footer text-right">
-                                	<a href="<?php echo route('academy.courses.view', $course->id); ?>" class="btn btn-default">Consulter le cours <i class="fa fa-chevron-circle-right fa-fw"></i></a>
-		                        </div>
+	                        	
+	                        	</div>
 		                        
 		                    </div>
 		                </div>

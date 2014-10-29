@@ -36,7 +36,7 @@ class Child extends \Eloquent
      * Relationship to User model.
      * @return array
      */
-    public function parent()
+    public function parents()
     {
     	return $this->belongsTo('\T4KModels\User', 'parent_id');
     }

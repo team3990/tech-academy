@@ -30,6 +30,12 @@
 .panel-level-3 {
 	border-color: #FF8144;
 }
+.panel-completed {
+	background-color: #F5F5F5;
+}
+.level-0 {
+	color: #CCCCCC;
+}
 .level-1 {
 	color: #58B15E;
 }

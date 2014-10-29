@@ -69,7 +69,7 @@
 				</div>
 			</div>
 			
-			
+			<?php if ((Auth::user()->is_parent && Route::input('id') != NULL) || !Auth::user()->is_parent) : ?>
 			
 			<ul class="nav nav-pills">
 				<li class="disabled"><a>Choisissez une concentration : </a></li>
@@ -99,7 +99,7 @@
                             		<i class="fa fa-fw"></i> <strong class="small">obligatoires pour tous les élèves</strong><br />
                             		<i class="fa fa-circle fa-fw level-2"></i> Cours avancés<br />
                             		<i class="fa fa-circle fa-fw level-3"></i> Cours experts<br />
-                            		<i class="fa fa-circle fa-fw"></i> Cours optionnels et complémentaires
+                            		<i class="fa fa-circle fa-fw level-0"></i> Cours optionnels et complémentaires
                             	</p>
                             	<p class="text-muted">Peu importe la(les) concentration(s) choisie(s) par l'élève, tous les cours d'introduction de toutes les concentrations sont obligatoires.</p>
                             	<p>
@@ -135,23 +135,6 @@
                             		
                             		<div class="row">
                             			<?php foreach ($track->subtracks as $subtrack) : ?>
-                            			
-                            				<?php 
-                            				$panel_type = "panel-default";
-                            				switch ($subtrack->level) :
-												case 1 :
-                            						$panel_type = "panel-level-1";
-                            						break;
-												case 2 : 
-													$panel_type = "panel-level-2";
-													break;
-												case 3 :
-													$panel_type = "panel-level-3";
-													break;
-												default :
-													$panel_type = "panel-default";
-                            					endswitch; 
-                            				?>
                             				
 	                            			<div class="col-sm-6 col-xs-12">
 	                            			
@@ -161,7 +144,7 @@
 					            					<strong><?php echo $subtrack->title; ?></strong>
 	                            				</p>
 	                            				
-							            		<div class="panel <?php echo $panel_type; ?>">
+							            		<div class="panel panel-default panel-level-<?php echo $subtrack->level; ?>">
 							            			<table class="table table-hover">
 							            				<tbody>
 							            					<?php foreach ($subtrack->courses as $course) : ?>
@@ -190,7 +173,7 @@
 	            <?php $i--; endforeach; ?>
             </div>
             
-        
+        	<?php endif; ?>
 
         @stop
         
